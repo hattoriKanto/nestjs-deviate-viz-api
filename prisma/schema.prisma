@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Vessel {
+  Name       String
+  IMONo      Int  @id
+  VesselType Int  @map("vessel_type")
+
+  dailyLogs  DailyLog[]
+
+  @@map("vessels")
+}
+
+model Reference {
+  RowID         Int  @id
+  Category      String
+  VesselTypeID  Int
+  Size          String
+  Traj          String
+  a             Float
+  b             Float
+  c             Float
+  d             Float
+  e             Float
+
+  @@map("references")
+}
+
+model DailyLog {
+  EID              Int    @unique
+  VesselID         Int    
+  LOGID            BigInt @id
+  FromUTC          DateTime
+  TOUTC            DateTime
+  MET2WCO2         Float
+  AET2WCO2         Float
+  BOT2WCO2         Float
+  VRT2WCO2         Float
+  TotT2WCO2        Float
+  MEW2WCO2e        Float
+  AEW2WCO2e        Float
+  BOW2WCO2e        Float
+  VRW2WCO2e        Float
+  ToTW2WCO2        Float
+  MESox            Float
+  AESox            Float
+  BOSox            Float
+  VRSox            Float
+  TotSOx           Float
+  MENOx            Float
+  AENOx            Float
+  TotNOx           Float
+  MEPM10           Float
+  AEPM10           Float
+  TotPM10          Float
+  AERCO2T2W        Float
+  AERCO2eW2W       Float
+  EEOICO2eW2W      Float
+
+  CreatedAt        DateTime @default(now())
+  UpdatedAt        DateTime @updatedAt
+
+  Vessel           Vessel @relation(fields: [VesselID], references: [IMONo])
+
+  @@map("daily_logs")
+}
