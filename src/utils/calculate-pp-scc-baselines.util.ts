@@ -1,23 +1,10 @@
-import { Reference as CE_PPSCCReferenceLine } from '@prisma/client';
 import Decimal from 'decimal.js';
-
-type PPSSCPreferenceLine = Omit<
-  CE_PPSCCReferenceLine,
-  'RowID' | 'Category' | 'VesselTypeID' | 'Size'
->;
-
-type CalculatePPBaselinesArgs = {
-  factors: PPSSCPreferenceLine[];
-  year: number;
-  DWT: Decimal;
-};
-
-type PPBaselines = {
-  min: Decimal;
-  striving: Decimal;
-  yxLow: Decimal;
-  yxUp: Decimal;
-};
+import {
+  CalculateBaselineArgs,
+  CalculatePPBaselinesArgs,
+  PPBaselines,
+  PPSSCPreferenceLine,
+} from 'src/types';
 
 const yxLowF = 0.33;
 const yxUpF = 1.67;
@@ -79,12 +66,6 @@ export const calculatePPSCCBaselines = ({
     yxLow,
     yxUp,
   };
-};
-
-type CalculateBaselineArgs = {
-  factors: PPSSCPreferenceLine;
-  year: number;
-  DWT: Decimal;
 };
 
 const calculatePPSCCBaseline = ({

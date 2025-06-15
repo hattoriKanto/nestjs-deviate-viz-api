@@ -11,7 +11,7 @@ model Vessel {
   Name       String
   IMONo      Int  @id
   VesselType Int  @map("vessel_type")
-  DWT        Int
+  DWT        Float
 
   dailyLogs  DailyLog[]
 
