@@ -3,13 +3,14 @@ CREATE TABLE "vessels" (
     "Name" TEXT NOT NULL,
     "IMONo" INTEGER NOT NULL,
     "vessel_type" INTEGER NOT NULL,
+    "DWT" INTEGER NOT NULL,
 
     CONSTRAINT "vessels_pkey" PRIMARY KEY ("IMONo")
 );
 
 -- CreateTable
 CREATE TABLE "references" (
-    "RowID" SERIAL NOT NULL,
+    "RowID" INTEGER NOT NULL,
     "Category" TEXT NOT NULL,
     "VesselTypeID" INTEGER NOT NULL,
     "Size" TEXT NOT NULL,
@@ -25,9 +26,9 @@ CREATE TABLE "references" (
 
 -- CreateTable
 CREATE TABLE "daily_logs" (
-    "eid" SERIAL NOT NULL,
+    "EID" INTEGER NOT NULL,
     "VesselID" INTEGER NOT NULL,
-    "LOGID" INTEGER NOT NULL,
+    "LOGID" BIGINT NOT NULL,
     "FromUTC" TIMESTAMP(3) NOT NULL,
     "TOUTC" TIMESTAMP(3) NOT NULL,
     "MET2WCO2" DOUBLE PRECISION NOT NULL,
@@ -57,11 +58,11 @@ CREATE TABLE "daily_logs" (
     "CreatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "UpdatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "daily_logs_pkey" PRIMARY KEY ("eid")
+    CONSTRAINT "daily_logs_pkey" PRIMARY KEY ("LOGID")
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "daily_logs_LOGID_key" ON "daily_logs"("LOGID");
+CREATE UNIQUE INDEX "daily_logs_EID_key" ON "daily_logs"("EID");
 
 -- AddForeignKey
 ALTER TABLE "daily_logs" ADD CONSTRAINT "daily_logs_VesselID_fkey" FOREIGN KEY ("VesselID") REFERENCES "vessels"("IMONo") ON DELETE RESTRICT ON UPDATE CASCADE;
