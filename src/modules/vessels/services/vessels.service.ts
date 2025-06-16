@@ -38,15 +38,24 @@ export class VesselsService {
       DWT: Decimal(vessel.DWT),
     });
 
-    return data.reduce((accum, { AER, baselineMin, quarter, year }) => {
-      const deviation = AER.minus(baselineMin)
-        .div(baselineMin)
-        .mul(100)
-        .toDecimalPlaces(2);
+    return data
+      .reduce((accum, { AER, baselineMin, quarter, year }) => {
+        const deviation = AER.minus(baselineMin)
+          .div(baselineMin)
+          .mul(100)
+          .toDecimalPlaces(2);
 
-      accum.push({ deviation, quarter, year });
+        accum.push({ deviation, quarter, year });
 
-      return accum;
-    }, [] as DeviationWithMetadata[]);
+        return accum;
+      }, [] as DeviationWithMetadata[])
+      .sort((a, b) => {
+        if (a.year !== b.year) {
+          return a.year - b.year;
+        }
+
+        const quarterOrder = { Q1: 1, Q2: 2, Q3: 3, Q4: 4 };
+        return quarterOrder[a.quarter] - quarterOrder[b.quarter];
+      });
   }
 }
