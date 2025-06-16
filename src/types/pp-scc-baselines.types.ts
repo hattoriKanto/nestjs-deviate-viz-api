@@ -1,5 +1,6 @@
 import { Reference as CE_PPSCCReferenceLine } from '@prisma/client';
 import Decimal from 'decimal.js';
+import { QUARTER } from './quarter.types';
 
 export type PPSSCPreferenceLine = Omit<
   CE_PPSCCReferenceLine,
@@ -27,6 +28,6 @@ export type CalculateBaselineArgs = {
 
 export type PPBaselinesWithMetadata = {
   year: number;
-  quarter: string;
+  quarter: QUARTER;
   baselines: PPBaselines;
 };
