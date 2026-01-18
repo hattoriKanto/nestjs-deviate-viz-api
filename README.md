@@ -15,17 +15,13 @@ This API is the engine behind DeviateViz, serving up vessel deviation emission d
 
 ### ✨ Features
 
-- 🚢 **Static Vessel Emission Display**
-  Fetches emission stats for four vessels from a PostgreSQL database - no filtering or interactions yet, just solid data delivery.
+- 🚢 **Static Vessel Emission Display** - Fetches emission stats for four vessels from a PostgreSQL database - no filtering or interactions yet, just solid data delivery.
 
-- 📊 **Beautiful Charts**
-  Supplies clean, structured data ideal for frontend visualizations (like with Highcharts).
+- 📊 **Beautiful Charts** - Supplies clean, structured data ideal for frontend visualizations (like with Highcharts).
 
-- ⚙️ **Minimal Setup**
-  No heavy logic or extra bells and whistles - just a simple API to serve your vessel deviation emission info.
+- ⚙️ **Minimal Setup** - No heavy logic or extra bells and whistles - just a simple API to serve your vessel deviation emission info.
 
-- 🔔 **Toast Notifications**
-  Sort your expenses by date, title, category, or amount. Find what you need in a snap.
+- 🔔 **Toast Notifications** - Sort your expenses by date, title, category, or amount. Find what you need in a snap.
 
 ## 🔑 Prerequisites
 
@@ -39,8 +35,8 @@ This project is built with a modern Node.js stack focused on scalability, modula
 - ⚡ **[NestJS](https://nestjs.com/)** - Progressive Node.js framework for building efficient and scalable server-side applications.
 - 🧬 **[Prisma ORM](https://www.prisma.io/)** – Type-safe, next-gen ORM for database access.
 - 🐘 **[PostgreSQL](https://www.postgresql.org/)** – Reliable, battle-tested relational database.
-- 💻 **Postman** – For manual testing of API endpoints and staying sane.
-- 📦 **TypeScript** – For static typing and a better dev experience.
+- 💻 **[Postman](https://www.postman.com/)** – For manual testing of API endpoints and staying sane.
+- 📦 **[TypeScript](https://www.typescriptlang.org/)** – For static typing and a better dev experience.
 
 ## Install
 
